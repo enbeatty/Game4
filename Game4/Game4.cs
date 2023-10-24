@@ -1,19 +1,42 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game4.Screens;
+using Game4.StateManagement;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Squared.Tiled;
+using System;
+using System.IO;
 
 namespace Game4
 {
-    public class Game1 : Game
+    public class Game4 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private readonly ScreenManager _screenManager;
 
-        public Game1()
+
+        public Game4()
         {
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.PreferredBackBufferWidth = Constants.GAME_WIDTH;
+            _graphics.PreferredBackBufferHeight = Constants.GAME_HEIGHT;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            _graphics.ApplyChanges();
+
+            var screenFactory = new ScreenFactory();
+            Services.AddService(typeof(IScreenFactory), screenFactory);
+
+            _screenManager = new ScreenManager(this);
+            Components.Add(_screenManager);
+
+            AddInitialScreens();
+        }
+
+        private void AddInitialScreens()
+        {
+            _screenManager.AddScreen(new BackgroundScreen(), null);
+            _screenManager.AddScreen(new MainMenuScreen(), null);
         }
 
         protected override void Initialize()
@@ -25,8 +48,6 @@ namespace Game4
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-
             // TODO: use this.Content to load your game content here
         }
 
@@ -43,9 +64,6 @@ namespace Game4
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
             base.Draw(gameTime);
         }
     }

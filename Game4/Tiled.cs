@@ -905,12 +905,15 @@ namespace Squared.Tiled
                                     break;
                                 case "tileset":
                                     {
-                                        using (var st = reader.ReadSubtree())
-                                        {
-                                            st.Read();
-                                            var tileset = Tileset.Load(st);
-                                            result.Tilesets.Add(tileset.Name, tileset);
-                                        }
+                                        var source =  reader.GetAttribute("source");
+                                        var filename2 = Path.Combine(content.RootDirectory, source);
+                                        using (var stream2 = System.IO.File.OpenText(filename2))
+                                        using (var reader2 = XmlReader.Create(stream2, settings))
+                                            while (reader2.Read())
+                                            {
+                                                var tileset = Tileset.Load(reader2);
+                                            }
+                                        
                                     }
                                     break;
                                 case "layer":
