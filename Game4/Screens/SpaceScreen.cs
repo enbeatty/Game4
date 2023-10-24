@@ -31,7 +31,9 @@ namespace Game4.Screens
             if (_content == null)
                 _content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            _map = Map.Load(Path.Combine(_content.RootDirectory, "SpaceMap.tmx"), _content);
+            _map = Map.Load(Path.Combine(_content.RootDirectory, "Space.tmx"), _content);
+
+            _spriteBatch = new Microsoft.Xna.Framework.Graphics.SpriteBatch(ScreenManager.GraphicsDevice);
         }
 
         public override void Deactivate()

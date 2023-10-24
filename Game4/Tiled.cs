@@ -302,8 +302,8 @@ namespace Squared.Tiled
                                                     reader.ReadElementContentAsBase64(buffer, 0, dataSize);
 
                                                     Stream stream = new MemoryStream(buffer, false);
-                                                    if (compressor == "gzip")
-                                                        stream = new GZipStream(stream, CompressionMode.Decompress, false);
+                                                    if (compressor == "zlib")
+                                                        stream = new ZLibStream(stream, CompressionMode.Decompress, false);
 
                                                     using (stream)
                                                     using (var br = new BinaryReader(stream))
@@ -905,15 +905,13 @@ namespace Squared.Tiled
                                     break;
                                 case "tileset":
                                     {
-                                        var source =  reader.GetAttribute("source");
-                                        var filename2 = Path.Combine(content.RootDirectory, source);
-                                        using (var stream2 = System.IO.File.OpenText(filename2))
-                                        using (var reader2 = XmlReader.Create(stream2, settings))
-                                            while (reader2.Read())
-                                            {
-                                                var tileset = Tileset.Load(reader2);
-                                            }
-                                        
+                                        using (var st = reader.ReadSubtree())
+                                        {
+                                            st.Read();
+                                            var tileset = Tileset.Load(st);
+                                            result.Tilesets.Add(tileset.Name, tileset);
+                                        }
+
                                     }
                                     break;
                                 case "layer":

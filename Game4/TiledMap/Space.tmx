@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="stars" tilewidth="32" tileheight="32" tilecount="16" columns="4">
+  <image source="stars.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="spaceObjects" tilewidth="32" tileheight="32" tilecount="16" columns="4">
+  <image source="spaceObjects.PNG" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="33" name="planets" tilewidth="32" tileheight="32" tilecount="16" columns="4">
+  <image source="planets.PNG" width="128" height="128"/>
+ </tileset>
+ <layer id="1" name="space" width="40" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxtl1kPozAMhM1dIBReWm1X4mHv+/j/v24TaT5lhPbBKgQntsdjOx0i4szSZRmzTFn6LJvey7eb1u9aL2trliNLkv6pZ751tnfX86RvzyyzdBrZWaVz2Bm73g/ZPvXbaX/Z1+o5me5pcrv43Om96L9kH19uet/1POuZPZP5jAzy6V2W9/Jn0H5i2CyGb1m+S6ecv0h6w2c1v3rzg/j9F4zw/bj4mnT+pyyfDZdd54JL0r5fWX5rbZMdfz4Uo+fTcz9oPdnzaHGzvhnWS1T+LebzLSqPUlQ+DvodtY4/fBuUWzix6HcynPiG38RNDZzCB931YqfRWeQnmY1ePrTyn/rAN/LHHvI7RuXwajhiE247ZuS/kX4blRtjVJ6VtYf2EUcXtZaIr8iHLB9lm+8pKl/ZCwc6+dBZ3qiDU7meJdTGIpv0Fsf2NP1N+BFLsfMly1ez80bxkYuH+dhHrW1w32UbnBqzyzrcPQ2X9oJ7Z/rgAUZgRoyj5Y3aJkfOh1H+z2aPvuu1AA/2i69gslsOvG83Wqff3O2dWsb2JH36Jb0KXyfLI3u3qPUGdnfzb4zaT6mJ3XTL3pf2w10wxAfqCk5MUWvAuQlXidv7yt3yjB/4XnR/ZPlp+HWG1/qfPDp2Pkfgr/cf55rXBX6TC7gBduU8ZuefLH91PjlnL1zdLD5yQ48Ff/bC0cFiASvO3fTtofioA3Bnjsxmb47aZxeztUbti9S5zyX2Mle9/zEXiM/7FL5Sh5tktxjAzPnhWLSmi1189/5Z8sJcvVvOwQHe43dvuIGH12ArXeoBTnDXoX7wK+m8xfaSB+cm9wPvoeQM/6jr09aZGfQlZr/3SHziroIdcgkPmA9eA3Blvtjn/gJmnEO90Efpm/QK8s484e7h90cwYUaQj2dUHoEN/cBrxu+qk51B3d2i9hLmKPEy4+mvzEv6dGO2ySt3hNHWwc5nW7JneOjzijsmNoo+c9Tnj/cQuODPyXR9lrLP67+x/MAxet21/01R7wbU/3U27lG5CMfpIdzZff6RixI//Rwu4QfYs+49yWthsvPICTVPb+feRr6fUXkEJ8gB920woJ9zp2XWouP/tcCosV9mPFiusjlaTNSv1yNxvywnrXx/6VznHr6BD7XGTPR+Ch+4m1Ef6aIDN/mPAaf83ub/M+ibYMh36sv/w8Ed6qmL2m/fZvkHuvMxXw==
+  </data>
+ </layer>
+</map>

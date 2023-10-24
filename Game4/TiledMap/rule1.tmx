@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="32" tileheight="32" infinite="0" nextlayerid="29" nextobjectid="1">
+ <tileset firstgid="1" name="stars" tilewidth="32" tileheight="32" tilecount="16" columns="4">
+  <image source="stars.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="spaceObjects" tilewidth="32" tileheight="32" tilecount="16" columns="4">
+  <image source="spaceObjects.PNG" width="128" height="128"/>
+ </tileset>
+ <layer id="1" name="input_space" width="4" height="4">
+  <data encoding="csv">
+28,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="output_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.005"/>
+  </properties>
+  <data encoding="csv">
+27,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="output1_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.005"/>
+  </properties>
+  <data encoding="csv">
+26,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="4" name="output2_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.02"/>
+  </properties>
+  <data encoding="csv">
+25,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="5" name="output3_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.005"/>
+  </properties>
+  <data encoding="csv">
+24,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="6" name="output4_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.005"/>
+  </properties>
+  <data encoding="csv">
+23,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="7" name="output5_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.02"/>
+  </properties>
+  <data encoding="csv">
+22,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="8" name="output6_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.02"/>
+  </properties>
+  <data encoding="csv">
+21,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="9" name="output7_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.30000000000000004"/>
+  </properties>
+  <data encoding="csv">
+16,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="10" name="output8_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+15,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="11" name="output9_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+14,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="12" name="output10_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+13,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="13" name="output11_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+12,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="14" name="output12_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+11,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="15" name="output13_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+10,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="16" name="output14_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+9,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="17" name="output15_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+8,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="18" name="output16_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+7,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="19" name="output17_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+6,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="20" name="output18_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+5,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="21" name="output19_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+4,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="22" name="output20_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+3,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="23" name="output21_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+2,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="24" name="output22_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="0.3"/>
+  </properties>
+  <data encoding="csv">
+1,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="28" name="output23_space" width="4" height="4">
+  <properties>
+   <property name="Probability" type="float" value="1"/>
+  </properties>
+  <data encoding="csv">
+29,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+</map>
