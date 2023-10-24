@@ -1,1 +1,2 @@
-﻿Content/pixel_ultima/pixel-ultima-regular.ttf - Pixel Ultima font created by Douglas Leao, released on Font Desk (https://fontesk.com/pixel-ultima-font/) under the Open Font License
+﻿Content/pixel_ultima/pixel-ultima-regular.ttf -- Pixel Ultima font created by Douglas Leao, released on Font Desk (https://fontesk.com/pixel-ultima-font/) under the Open Font License
+Content/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases\PNGs -- Void - Main Ship by FoozleCC released on (https://foozlecc.itch.io/void-main-ship) under Creative Commons Zero, CC0
