@@ -9,11 +9,11 @@ namespace Game4
         /// <summary>
         /// The width of the game world
         /// </summary>
-        public static int GAME_WIDTH = 1280;
+        public static int GAME_WIDTH = 768;
 
         /// <summary>
         /// The height of hte game world
         /// </summary>
-        public static int GAME_HEIGHT = 768;
+        public static int GAME_HEIGHT = 9600;
     }
 }
