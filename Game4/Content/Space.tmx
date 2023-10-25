@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="stars" tilewidth="32" tileheight="32" tilecount="16" columns="4">
+  <image source="stars.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="spaceObjects" tilewidth="32" tileheight="32" tilecount="16" columns="4">
+  <image source="spaceObjects.PNG" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="33" name="planets" tilewidth="32" tileheight="32" tilecount="16" columns="4">
+  <image source="planets.PNG" width="128" height="128"/>
+ </tileset>
+ <layer id="1" name="space" width="40" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxtl9eu3DAMROm+bmun7CabwA/JTe///3WRgDnQxMgDYVmWRHI4JOUuIo4kTZI+yZCkTbLqPX+7aP6q+Tw3J9mTLFp/aMy3xvZuGg/6dk8yak0lPbPW7HbGpvddug89G+3P+2qNF1t7mFxONjd6z+sf0o8tF71vGo8as2fQ+FmS51rbyaZ3Sd7Lnk778WE1H74m+aY1+fxJ0ho+s9nVmh34708wwvb9ZOui8z8m+WS4bDoXXBbt+5nkl+ZW6fHxLh89nh77TvOLjXvzm/l83ivZMUXh32Q2X6LwaInCx07PXvPYw7dOsYUTk56D4cQ37MZvcuAQPqydT3oqnUV8FtPRyoZa9pMf2Eb82EN8+ygcng1HdMJtx4z4V1pfR+FGH4Vnee6mffjRRMkl/MvylOSDdPN9icJX9sKBRjY0Fjfy4FCsRwm5MUkntcWxPWz9KvzwJev5nOSL6Xkt/4jFzWxso+Q2uG/SDU6V6c3z5Dc8qE0c98bOAQ8wAjN87C1u5DYxcj70sn80fdRdzwV4sEXJM+pdrXli4HW70jz15mrv5DK6B62nXlKrsHWwOLJ3jZJvYHc1+/oo9ZSc2Gxt3vvQfrgLhthAXsGJIUoOODfhKn57XblK4Cg1ifh8T/LD8GsMr/k/cXTsvI/AX68/zjXPC+wmFnAD7PJ59M7fSf7ofGLOXri6mn/EhhoL/uyFo535Alacu+rbTf6RB+BOHxlN3xilzk6ma45SF8lz70vspa96/aMv4J/XKWwlD1fJZj6AmfPDsahtLXqx3etnjgt99WoxBwd4j92t4QYenoO11pIPcIK7DvmDXYvOm2wvcXBucj/wGkrMsI+8PmyenkFdovdT87wPc1dBD7GEB/QHzwG4Mp70c38BM84hX6ij1E1qBXGnn3D38PsjmNAjiMc9Co/AhnrgOeN31cHOIO8uUWoJfRR/6fHUV/oldboy3cSVO0Jv82DnvW2xMTz0fsUdEx15PX3U+4/XELjg48XWei9ln+d/ZfGBY/nbiyQv49/6N0S5G5D/5964ReEiHKeGcGf3/kcssv/Uc7hEzQV75r0meS5gM/UGTnHnJo/oVXnfPQqP4AQx4L4NBtRz7rT0Wtb4vxYYVfakx4PlLJ29+UT+ej7i9yNKjtWy/aFznXvYBj7kGj3R6yl84G5Gfrw9rYGb/GPAKb+3+X8GdRMM+U5++T8c3CGfmij19k2Sv3U/MdI=
+  </data>
+ </layer>
+</map>

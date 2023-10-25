@@ -13,10 +13,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Squared.Tiled;
 using System.IO;
 using Microsoft.Xna.Framework.Audio;
+using System.Text.Json;
 
 namespace Game4.Screens
 {
-    public class SpaceScreen : GameScreen
+    public class SpaceLevelScreen : GameScreen
     {
         private ContentManager _content;
         private Microsoft.Xna.Framework.Graphics.SpriteBatch _spriteBatch;
@@ -24,6 +25,8 @@ namespace Game4.Screens
 
         private Map _map;
         private Vector2 _viewportPosition;
+
+        private GameSave _gameSave; 
 
 
         public override void Activate()
@@ -34,6 +37,19 @@ namespace Game4.Screens
             _map = Map.Load(Path.Combine(_content.RootDirectory, "Space.tmx"), _content);
 
             _spriteBatch = new Microsoft.Xna.Framework.Graphics.SpriteBatch(ScreenManager.GraphicsDevice);
+
+            string fileName = Path.Combine(Path.GetFullPath("."), "SaveGame.json");
+            string jsonString = File.ReadAllText(fileName);
+            GameSave game = JsonSerializer.Deserialize<GameSave>(jsonString)!;
+
+            if (game.Level != 0)
+            {
+                _gameSave = game;
+            }
+            else
+            {
+                _gameSave = new GameSave(0, 0, 5); //Need to change 2nd argument of Speed
+            }
         }
 
         public override void Deactivate()
@@ -44,6 +60,10 @@ namespace Game4.Screens
         public override void Unload()
         {
             _content.Unload();
+
+            string fileName = "SpaceSave.json";
+            string jsonString = JsonSerializer.Serialize(_gameSave);
+            File.WriteAllText(fileName, jsonString);
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)

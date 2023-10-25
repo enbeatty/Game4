@@ -24,7 +24,7 @@ namespace Game4.Screens
 
         private void PlayGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new SpaceScreen());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new SpaceLevelScreen());
         }
 
         protected override void OnCancel(PlayerIndex playerIndex)
