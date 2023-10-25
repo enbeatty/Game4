@@ -10,7 +10,9 @@ namespace Game4.Screens
 {
     public class MainMenuScreen : MenuScreen
     {
-        public MainMenuScreen() : base("Main Menu")
+        private Game _game;
+
+        public MainMenuScreen(Game game) : base("Main Menu")
         {
             var playGameMenuEntry = new MenuEntry("Play Game");
             var exitMenuEntry = new MenuEntry("Exit");
@@ -20,11 +22,13 @@ namespace Game4.Screens
 
             MenuEntries.Add(playGameMenuEntry);
             MenuEntries.Add(exitMenuEntry);
+
+            _game = game;
         }
 
         private void PlayGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new SpaceLevelScreen());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new SpaceLevelScreen(_game));
         }
 
         protected override void OnCancel(PlayerIndex playerIndex)

@@ -36,7 +36,7 @@ namespace Game4
         private void AddInitialScreens()
         {
             _screenManager.AddScreen(new BackgroundScreen(), null);
-            _screenManager.AddScreen(new MainMenuScreen(), null);
+            _screenManager.AddScreen(new MainMenuScreen(this), null);
         }
 
         protected override void Initialize()
