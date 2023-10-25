@@ -56,16 +56,16 @@ namespace Game4.Screens
             _game.Components.Add(pixie);
 
             string fileName = Path.Combine(Path.GetFullPath("."), "SaveGame.json");
-            string jsonString = File.ReadAllText(fileName);
-            GameSave game = JsonSerializer.Deserialize<GameSave>(jsonString)!;
 
-            if (game.Level != 0)
+            if( !File.Exists(fileName) )
             {
-                _gameSave = game;
+                _gameSave = new GameSave(0, 0, 5);
             }
             else
             {
-                _gameSave = new GameSave(0, 0, 5); //Need to change 2nd argument of Speed
+                string jsonString = File.ReadAllText(fileName);
+                GameSave game = JsonSerializer.Deserialize<GameSave>(jsonString)!;
+                _gameSave = game;
             }
         }
 
@@ -78,7 +78,7 @@ namespace Game4.Screens
         {
             _content.Unload();
 
-            string fileName = "SpaceSave.json";
+            string fileName = "SaveGame.json";
             string jsonString = JsonSerializer.Serialize(_gameSave);
             File.WriteAllText(fileName, jsonString);
         }
@@ -95,8 +95,8 @@ namespace Game4.Screens
             base.Draw(gameTime);
 
             //Calculate our offset vector
-            float playerY = MathHelper.Clamp(_spaceShip.Position.Y, 50, 450);
-            float offsetY = 450 - playerY;
+            float playerY = MathHelper.Clamp(_spaceShip.Position.Y, 450, 900);
+            float offsetY = 200 - playerY;
 
             Matrix transform;
             transform = Matrix.CreateTranslation(0, offsetY, 0);
