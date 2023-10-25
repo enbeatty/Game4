@@ -95,7 +95,7 @@ namespace Game4.Screens
             base.Draw(gameTime);
 
             //Calculate our offset vector
-            float playerY = MathHelper.Clamp(450, _spaceShip.Position.Y, 11000);
+            float playerY = MathHelper.Clamp(_spaceShip.Position.Y, 50, 450);
             float offsetY = 450 - playerY;
 
             Matrix transform;

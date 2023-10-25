@@ -36,7 +36,7 @@ namespace Game4
 
             var scale = RandomHelper.NextFloat(0.1f, 0.5f);
 
-            var lifetime = RandomHelper.NextFloat(0.1f, 0.5f);
+            var lifetime = RandomHelper.NextFloat(0.1f, 0.75f);
 
             p.Initialize(where, velocity, acceleration, Color.Goldenrod, scale : scale, lifetime : lifetime);
             
@@ -50,8 +50,9 @@ namespace Game4
 
             Vector2 position = _emitter.Position - new Vector2(40,24);
 
+            Vector2 p = new Vector2(_emitter.Position.X - 40,426);
 
-            AddParticles(position);
+            AddParticles(p);
         }
     }
 }
