@@ -27,6 +27,7 @@ namespace Game4.Screens
         private Random _random = new Random();
 
         private Map _map;
+
         private Vector2 _viewportPosition = new Vector2(0, Constants.GAME_HEIGHT - 896);
 
         private GameSave _gameSave;
@@ -47,6 +48,10 @@ namespace Game4.Screens
 
         private bool _collided = false;
 
+        private OOTilemap _ooMap;
+
+        private BasicTilemap _basicMap;
+
 
         public SpaceLevelScreen(Game game)
         {
@@ -60,7 +65,11 @@ namespace Game4.Screens
             if (_content == null)
                 _content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            _map = Map.Load(Path.Combine(_content.RootDirectory, "SpaceMap.tmx"), _content);
+            //_map = Map.Load(Path.Combine(_content.RootDirectory, "SpaceMap.tmx"), _content);
+
+            _ooMap = _content.Load<OOTilemap>("SpaceMap");
+
+            //_basicMap = _content.Load<BasicTilemap>("test");
 
             _spriteBatch = new Microsoft.Xna.Framework.Graphics.SpriteBatch(ScreenManager.GraphicsDevice);
 
@@ -163,9 +172,11 @@ namespace Game4.Screens
             }
 
             _spriteBatch.Begin();
-            _map.Draw(_spriteBatch, new Rectangle(0, 0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT), _viewportPosition); //TODO maybe paralax it a bit and move in different sprite batch call
+            //_map.Draw(_spriteBatch, new Rectangle(0, 0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT), _viewportPosition); //TODO maybe paralax it a bit and move in different sprite batch call
+            _ooMap.Draw(gameTime, _spriteBatch);
+            //_basicMap.Draw(gameTime, _spriteBatch);
 
-            foreach(var a in _asteroids)
+            foreach (var a in _asteroids)
             {
                 if(!a.Under)
                 {

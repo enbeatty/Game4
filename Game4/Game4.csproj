@@ -19,6 +19,9 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TilemapPipeline\TilemapPipeline.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="Space.tmx">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

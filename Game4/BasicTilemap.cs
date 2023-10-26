@@ -53,9 +53,9 @@ namespace Game4
         /// <param name="spriteBatch">a spritebatch to draw with</param>
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            for(int y = 0; y < MapHeight; y++)
+            for (int y = 0; y < MapHeight; y++)
             {
-                for(int x = 0; x < MapWidth; x++)
+                for (int x = 0; x < MapWidth; x++)
                 {
                     // Indices start at 1, so shift by 1 for array coordinates
                     int index = TileIndices[y * MapWidth + x] - 1;

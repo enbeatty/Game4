@@ -10,6 +10,7 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\bin\Debug\net6.0-windows\TilemapPipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -176,6 +177,11 @@
 /processorParam:TextureFormat=Color
 /build:rectangle.png
 
+#begin SpaceMap.tmx
+/importer:TiledImporter
+/processor:OOTilemapProcessor
+/build:SpaceMap.tmx
+
 #begin spaceObjects.PNG
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -199,4 +205,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:stars.png
+
+#begin test.tmx
+/importer:TiledImporter
+/processor:BasicTilemapProcessor
+/build:test.tmx
 
