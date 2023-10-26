@@ -19,7 +19,7 @@ namespace Game4
 
         private Texture2D _spaceShip;
 
-        private BoundingRectangle _bounds = new BoundingRectangle(new Vector2(-24, -24), 24, 48);
+        private BoundingRectangle _bounds = new BoundingRectangle(new Vector2(397, 0), 24, 24);
 
         /// <summary>
         /// The bounding volume of the sprite
@@ -31,7 +31,7 @@ namespace Game4
         /// </summary>
         public Color Color { get; set; } = Color.White;
 
-        public Vector2 Position { get; set; } = new Vector2(650, 450);
+        public Vector2 Position { get; set; } = new Vector2(450, 750);
 
         public Vector2 Velocity { get; set; }
 
@@ -60,19 +60,18 @@ namespace Game4
                 Position += new Vector2(-5f, 0);
 
                 // Update the _bounds
-                _bounds.X = Position.X; //TODO
+                _bounds.X = Position.X - 52; //TODO
             }
             if (_keyboardState.IsKeyDown(Keys.Right) || _keyboardState.IsKeyDown(Keys.D))
             {
                 Position += new Vector2(5f, 0);
 
                 // Update the _bounds
-                _bounds.X = Position.X; //TODO
+                _bounds.X = Position.X - 52; //TODO
             }
 
-            _bounds.Y = Position.Y;
+            _bounds.Y = Position.Y - 50;
             Velocity = shipPosition - Position;
-            Position += new Vector2(0, -1);
         }
 
         /// <summary>
@@ -82,7 +81,7 @@ namespace Game4
         /// <param name="spriteBatch">The spritebatch to render with</param>
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_spaceShip, Position, null, Color.White, 0f, new Vector2(64, 64), 1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(_spaceShip, Position, null, Color, 0f, new Vector2(64, 64), 1f, SpriteEffects.None, 0);
         }
     }
 }

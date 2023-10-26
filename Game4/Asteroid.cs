@@ -15,7 +15,9 @@ namespace Game4
     {
         private Texture2D _asteroid;
 
-        private BoundingRectangle _bounds = new BoundingRectangle(new Vector2(-24, -24), 24, 48); //TODO
+        private BoundingRectangle _bounds = new BoundingRectangle(new Vector2(-64, -64), 100, 35); //TODO
+
+        private Vector2 _position;
 
         /// <summary>
         /// The bounding volume of the sprite
@@ -27,11 +29,19 @@ namespace Game4
         /// </summary>
         public Color Color { get; set; } = Color.White;
 
-        public Vector2 Position { get; set; } = new Vector2(650, 450);
+        public Vector2 Position => _position;
 
         public Vector2 Velocity { get; set; }
 
         public float Direction { get; set; }
+
+        public bool Under { get; set; } = false;
+
+        public Asteroid(Vector2 position, float direction)
+        {
+            _position = position;
+            Direction = direction;
+        }
 
         /// <summary>
         /// Loads the sprite texture using the provided ContentManager
@@ -68,9 +78,10 @@ namespace Game4
         /// <param name="gameTime">The GameTime</param>
         public void Update(GameTime gameTime)
         {
-            //Position.X += Direction;
-            _bounds.X = Position.X;
-            _bounds.Y = Position.Y;
+            //_position += new Vector2(Direction, 1);
+            _position += new Vector2(0, 5);
+            _bounds.X = Position.X - 50;
+            _bounds.Y = Position.Y - 50;
         }
 
         /// <summary>
@@ -80,7 +91,7 @@ namespace Game4
         /// <param name="spriteBatch">The spritebatch to render with</param>
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_asteroid, Position, null, Color.White, 0f, new Vector2(64, 64), 1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(_asteroid, Position, null, Color, 0f, new Vector2(64, 64), 1f, SpriteEffects.None, 0);
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Game4
 
             Vector2 position = _emitter.Position - new Vector2(40,24);
 
-            Vector2 p = new Vector2(_emitter.Position.X - 40,426);
+            Vector2 p = new Vector2(_emitter.Position.X - 40,726);
 
             AddParticles(p);
         }

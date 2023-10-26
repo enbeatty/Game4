@@ -20,7 +20,7 @@ namespace Game4
             _graphics = new GraphicsDeviceManager(this);
             _graphics.GraphicsProfile = GraphicsProfile.HiDef;
             _graphics.PreferredBackBufferWidth = Constants.GAME_WIDTH;
-            _graphics.PreferredBackBufferHeight = 900;
+            _graphics.PreferredBackBufferHeight = 896;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             _graphics.ApplyChanges();

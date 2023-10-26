@@ -49,7 +49,7 @@ namespace Game4.Screens
         public override void Activate()
         {
             var content = ScreenManager.Game.Content;
-                _gradientTexture = content.Load<Texture2D>("Background");
+                _gradientTexture = content.Load<Texture2D>("background");
         }
 
         public override void HandleInput(GameTime gameTime, InputState input)
