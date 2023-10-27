@@ -171,7 +171,7 @@ namespace Game4.Screens
             _viewportPosition += new Vector2(0, -3);
             }
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(); //Can do the transform
             //_map.Draw(_spriteBatch, new Rectangle(0, 0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT), _viewportPosition); //TODO maybe paralax it a bit and move in different sprite batch call
             _ooMap.Draw(gameTime, _spriteBatch);
             //_basicMap.Draw(gameTime, _spriteBatch);
