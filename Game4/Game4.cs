@@ -3,6 +3,7 @@ using Game4.StateManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using Squared.Tiled;
 using System;
 using System.IO;
@@ -14,6 +15,10 @@ namespace Game4
         private GraphicsDeviceManager _graphics;
         private readonly ScreenManager _screenManager;
 
+        /// <summary>
+        /// Sound
+        /// </summary>
+        private Song _backgroundMusic;
 
         public Game4()
         {
@@ -50,6 +55,9 @@ namespace Game4
         protected override void LoadContent()
         {
             // TODO: use this.Content to load your game content here
+            _backgroundMusic = Content.Load<Song>("cosmic-glow-6703");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(_backgroundMusic);
         }
 
         protected override void Update(GameTime gameTime)

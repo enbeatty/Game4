@@ -50,6 +50,12 @@
 /processorParam:TextureFormat=Color
 /build:circle.png
 
+#begin cosmic-glow-6703.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:cosmic-glow-6703.mp3
+
 #begin darkAsteroid1.png
 /importer:TextureImporter
 /processor:TextureProcessor

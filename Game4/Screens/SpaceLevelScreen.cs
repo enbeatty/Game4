@@ -53,6 +53,7 @@ namespace Game4.Screens
         private BasicTilemap _basicMap;
 
 
+
         public SpaceLevelScreen(Game game)
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
@@ -99,7 +100,6 @@ namespace Game4.Screens
                 _asteroids[i] = new Asteroid(new Vector2(RandomHelper.Next(0, Constants.GAME_WIDTH), RandomHelper.Next(-9000, 500)), RandomHelper.NextFloat(-1, 0));
                 _asteroids[i].LoadContent(_content);
             }
-
 
 
             ball = _content.Load<Texture2D>("rectangle");
