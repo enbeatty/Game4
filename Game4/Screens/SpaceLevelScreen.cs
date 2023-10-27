@@ -28,7 +28,10 @@ namespace Game4.Screens
 
         private Map _map;
 
-        private Vector2 _viewportPosition = new Vector2(0, Constants.GAME_HEIGHT - 896);
+        //private Vector2 _viewportPosition = new Vector2(0, Constants.GAME_HEIGHT - 896);
+
+        //private float _height = Constants.GAME_HEIGHT;
+        private float _height =-500; //we almost there
 
         private GameSave _gameSave;
 
@@ -141,7 +144,7 @@ namespace Game4.Screens
                 foreach (var a in _asteroids)
                 {
                     a.Update(gameTime);
-                    if (!a.Under && a.Bounds.CollidesWith(_spaceShip.Bounds))
+                    if (/*!a.Under &&*/ a.Bounds.CollidesWith(_spaceShip.Bounds))
                     {
                         _game.Components.Remove(_pixie);
                         var LostMessageBox = new MessageBoxScreen(_message);
@@ -168,12 +171,20 @@ namespace Game4.Screens
 
             if (!_collided)
             {
-            _viewportPosition += new Vector2(0, -3);
+                _height += 3;
+            //_viewportPosition += new Vector2(0, -3);
             }
+
+            Matrix transform;
+            transform = Matrix.CreateTranslation(0, _height, 0);
+
+            _spriteBatch.Begin(transformMatrix: transform);
+            _ooMap.Draw(gameTime, _spriteBatch);
+            _spriteBatch.End();
 
             _spriteBatch.Begin(); //Can do the transform
             //_map.Draw(_spriteBatch, new Rectangle(0, 0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT), _viewportPosition); //TODO maybe paralax it a bit and move in different sprite batch call
-            _ooMap.Draw(gameTime, _spriteBatch);
+            
             //_basicMap.Draw(gameTime, _spriteBatch);
 
             foreach (var a in _asteroids)
@@ -181,16 +192,16 @@ namespace Game4.Screens
                 if(!a.Under)
                 {
                     a.Draw(gameTime, _spriteBatch);
-                    //var rect = new Rectangle((int)a.Bounds.X, (int)a.Bounds.Y, (int)a.Bounds.Width, (int)a.Bounds.Height);
-                    //_spriteBatch.Draw(ball, rect, Color.White);
+                    var rect = new Rectangle((int)a.Bounds.X, (int)a.Bounds.Y, (int)a.Bounds.Width, (int)a.Bounds.Height);
+                    _spriteBatch.Draw(ball, rect, Color.White);
                 }
             }
 
             _spaceShip.Draw(gameTime, _spriteBatch);
             _spriteBatch.DrawString(font, $"Current Level: {_gameSave.Level}", new Vector2(0, 0), Color.LightGoldenrodYellow);
-            //var newrect = new Rectangle((int)_spaceShip.Bounds.X, (int)_spaceShip.Bounds.Y, (int)_spaceShip.Bounds.Width, (int)_spaceShip.Bounds.Height);
+            var newrect = new Rectangle((int)_spaceShip.Bounds.X, (int)_spaceShip.Bounds.Y, (int)_spaceShip.Bounds.Width, (int)_spaceShip.Bounds.Height);
             //var newrect = new Rectangle(450, 750, 64, 64);
-            //_spriteBatch.Draw(ball, newrect, Color.White);
+            _spriteBatch.Draw(ball, newrect, Color.White);
 
             _spriteBatch.End();
         }

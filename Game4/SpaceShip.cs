@@ -69,6 +69,13 @@ namespace Game4
                 // Update the _bounds
                 _bounds.X = Position.X - 52; //TODO
             }
+            if (_keyboardState.IsKeyDown(Keys.Up) || _keyboardState.IsKeyDown(Keys.A))
+            {
+                Position += new Vector2(0, -5f);
+
+                // Update the _bounds
+                _bounds.X = Position.X - 52; //TODO
+            }
 
             _bounds.Y = Position.Y - 50;
             Velocity = shipPosition - Position;
@@ -81,7 +88,7 @@ namespace Game4
         /// <param name="spriteBatch">The spritebatch to render with</param>
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_spaceShip, Position, null, Color, 0f, new Vector2(64, 64), 1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(_spaceShip, Position, null, Color, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0);
         }
     }
 }
