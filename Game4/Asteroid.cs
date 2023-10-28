@@ -17,7 +17,7 @@ namespace Game4
 
         private BoundingRectangle _bounds; //TODO
 
-        private Vector2 _boundsOffset = new Vector2(16,16);
+        private Vector2 _boundsOffset = new Vector2(16,22);
 
         private Vector2 _position;
 

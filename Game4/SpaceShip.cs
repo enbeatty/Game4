@@ -19,7 +19,9 @@ namespace Game4
 
         private Texture2D _spaceShip;
 
-        private BoundingRectangle _bounds = new BoundingRectangle(new Vector2(397, 0), 24, 24);
+        private BoundingRectangle _bounds;
+
+        private Vector2 _boundsOffset = new Vector2(11, 11);
 
         /// <summary>
         /// The bounding volume of the sprite
@@ -31,9 +33,14 @@ namespace Game4
         /// </summary>
         public Color Color { get; set; } = Color.White;
 
-        public Vector2 Position { get; set; } = new Vector2(450, 750);
+        public Vector2 Position { get; set; } = new Vector2(350, 750);
 
         public Vector2 Velocity { get; set; }
+
+        public SpaceShip()
+        {
+            _bounds = new BoundingRectangle(new Vector2(Position.X + _boundsOffset.X, Position.Y + _boundsOffset.Y), 48 - _boundsOffset.X, 48 - _boundsOffset.Y);
+        }
 
         /// <summary>
         /// Loads the sprite texture using the provided ContentManager
@@ -57,27 +64,35 @@ namespace Game4
             // Apply keyboard movement
             if (_keyboardState.IsKeyDown(Keys.Left) || _keyboardState.IsKeyDown(Keys.A))
             {
-                Position += new Vector2(-5f, 0);
-
-                // Update the _bounds
-                _bounds.X = Position.X - 52; //TODO
+                if(Position.X > -10)
+                {
+                    Position += new Vector2(-5f, 0);
+                }                
             }
             if (_keyboardState.IsKeyDown(Keys.Right) || _keyboardState.IsKeyDown(Keys.D))
             {
-                Position += new Vector2(5f, 0);
-
-                // Update the _bounds
-                _bounds.X = Position.X - 52; //TODO
+                if(Position.X < Constants.GAME_WIDTH - 40)
+                {
+                    Position += new Vector2(5f, 0);
+                }                
             }
-            if (_keyboardState.IsKeyDown(Keys.Up) || _keyboardState.IsKeyDown(Keys.A))
-            {
-                Position += new Vector2(0, -5f);
-
-                // Update the _bounds
-                _bounds.X = Position.X - 52; //TODO
+            if (_keyboardState.IsKeyDown(Keys.Up) || _keyboardState.IsKeyDown(Keys.W))
+            {                
+                if (Position.Y > 0)
+                {
+                    Position += new Vector2(0, -5f);
+                }
+            }
+            if (_keyboardState.IsKeyDown(Keys.Down) || _keyboardState.IsKeyDown(Keys.S))
+            {                
+                if (Position.Y < 860)
+                {
+                    Position += new Vector2(0, 5f);
+                }
             }
 
-            _bounds.Y = Position.Y - 50;
+            _bounds.X = Position.X + _boundsOffset.X;
+            _bounds.Y = Position.Y + _boundsOffset.Y;
             Velocity = shipPosition - Position;
         }
 

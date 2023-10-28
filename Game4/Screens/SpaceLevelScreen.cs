@@ -30,8 +30,7 @@ namespace Game4.Screens
 
         //private Vector2 _viewportPosition = new Vector2(0, Constants.GAME_HEIGHT - 896);
 
-        //private float _height = Constants.GAME_HEIGHT;
-        private float _height =-500; //we almost there
+        private float _height = -Constants.GAME_HEIGHT + 900; //we almost there
 
         private GameSave _gameSave;
 
@@ -150,12 +149,12 @@ namespace Game4.Screens
                         var LostMessageBox = new MessageBoxScreen(_message);
                         LostMessageBox.Accepted += LostMessageBoxAccepted;
                         LostMessageBox.Cancelled += LostMessageBoxCancelled;
-
+                    
                         ScreenManager.AddScreen(LostMessageBox, 0);
                         _collided = true;
-
+                    
                     }
-                    if (a.Position.Y > _spaceShip.Position.Y + 200 && !a.Under)
+                    if (a.Position.Y > _spaceShip.Position.Y + 900 && !a.Under)
                     {
                         a.Under = true;
                         _numAsteroidsLeft--;
@@ -192,16 +191,16 @@ namespace Game4.Screens
                 if(!a.Under)
                 {
                     a.Draw(gameTime, _spriteBatch);
-                    var rect = new Rectangle((int)a.Bounds.X, (int)a.Bounds.Y, (int)a.Bounds.Width, (int)a.Bounds.Height);
-                    _spriteBatch.Draw(ball, rect, Color.White);
+                    //var rect = new Rectangle((int)a.Bounds.X, (int)a.Bounds.Y, (int)a.Bounds.Width, (int)a.Bounds.Height);
+                    //_spriteBatch.Draw(ball, rect, Color.White);
                 }
             }
 
             _spaceShip.Draw(gameTime, _spriteBatch);
             _spriteBatch.DrawString(font, $"Current Level: {_gameSave.Level}", new Vector2(0, 0), Color.LightGoldenrodYellow);
-            var newrect = new Rectangle((int)_spaceShip.Bounds.X, (int)_spaceShip.Bounds.Y, (int)_spaceShip.Bounds.Width, (int)_spaceShip.Bounds.Height);
+            //var newrect = new Rectangle((int)_spaceShip.Bounds.X, (int)_spaceShip.Bounds.Y, (int)_spaceShip.Bounds.Width, (int)_spaceShip.Bounds.Height);
             //var newrect = new Rectangle(450, 750, 64, 64);
-            _spriteBatch.Draw(ball, newrect, Color.White);
+            //_spriteBatch.Draw(ball, newrect, Color.White);
 
             _spriteBatch.End();
         }
