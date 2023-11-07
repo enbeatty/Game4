@@ -35,14 +35,14 @@ namespace Game4
 
         public Vector2 Velocity { get; set; }
 
-        public float Direction { get; set; }
+        public int Texture { get; set; }
 
         public bool Under { get; set; } = false;
 
-        public Asteroid(Vector2 position, float direction)
+        public Asteroid(Vector2 position, int texture)
         {
             _position = position;
-            Direction = direction;
+            Texture = texture;
             _bounds = new BoundingRectangle(new Vector2(position.X + _boundsOffset.X, position.Y + _boundsOffset.Y), 128 - _boundsOffset.X, 64 - _boundsOffset.Y);
         }
 
@@ -53,8 +53,7 @@ namespace Game4
         public void LoadContent(ContentManager content)
         {
             string filename = "";
-            int rand = RandomHelper.Next(4);
-            switch (rand)
+            switch (Texture)
             { 
                 case 0:
                     filename = "lightAsteroid1";

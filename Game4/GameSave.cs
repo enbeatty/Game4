@@ -16,11 +16,14 @@ namespace Game4
 
         public int Asteroids { get; set; }
 
-        public GameSave(int level, int speed, int asteroids)
+        public int Seed {get; set; }
+
+        public GameSave(int level, int speed, int asteroids, int seed)
         { 
             Level = level;
             Speed = speed;
             Asteroids = asteroids;
+            Seed = seed;
         }
     }
 }

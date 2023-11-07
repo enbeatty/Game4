@@ -13,16 +13,19 @@ namespace Game4.Screens
         private Texture2D _gradientTexture;
         private readonly InputAction _menuSelect;
         private readonly InputAction _menuCancel;
+        private readonly InputAction _menuReset;
 
         public event EventHandler<PlayerIndexEventArgs> Accepted;
         public event EventHandler<PlayerIndexEventArgs> Cancelled;
+        public event EventHandler<PlayerIndexEventArgs> Reset;
 
         // Constructor lets the caller specify whether to include the standard
         // "A=ok, B=cancel" usage text prompt.
         public MessageBoxScreen(string message, bool includeUsageText = true)
         {
-            const string usageText = "\nA button, Space, Enter = ok" +
-                                     "\nB button, Backspace = cancel";
+            const string usageText = "\nSpace, Enter = ok" +
+                                     "\nBackspace = cancel" +
+                                     "\nG = regenerate map";
 
             if (includeUsageText)
                 _message = message + usageText;
@@ -40,6 +43,9 @@ namespace Game4.Screens
             _menuCancel = new InputAction(
                 new[] { Buttons.B, Buttons.Back },
                 new[] { Keys.Back, Keys.Escape }, true);
+            _menuReset = new InputAction(
+                new[] {Buttons.DPadUp},
+                new[] { Keys.G }, true);
         }
 
         // Loads graphics content for this screen. This uses the shared ContentManager
@@ -69,6 +75,11 @@ namespace Game4.Screens
             else if (_menuCancel.Occurred(input, ControllingPlayer, out playerIndex))
             {
                 Cancelled?.Invoke(this, new PlayerIndexEventArgs(playerIndex));
+                ExitScreen();
+            }
+            else if (_menuReset.Occurred(input, ControllingPlayer, out playerIndex))
+            {
+                Reset?.Invoke(this, new PlayerIndexEventArgs(playerIndex));
                 ExitScreen();
             }
         }

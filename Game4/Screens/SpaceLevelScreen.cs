@@ -24,7 +24,7 @@ namespace Game4.Screens
     {
         private ContentManager _content;
         private Microsoft.Xna.Framework.Graphics.SpriteBatch _spriteBatch;
-        private Random _random = new Random();
+        private Random _random;
 
         private Map _map;
 
@@ -86,7 +86,8 @@ namespace Game4.Screens
 
             if( !File.Exists(fileName) )
             {
-                _gameSave = new GameSave(1, 0, 100);
+                _random = new Random();
+                _gameSave = new GameSave(1, 0, 100, _random.Next(10000, 50000));
             }
             else
             {
@@ -94,12 +95,12 @@ namespace Game4.Screens
                 GameSave game = JsonSerializer.Deserialize<GameSave>(jsonString)!;
                 _gameSave = game;
             }
-
+            _random = new Random(_gameSave.Seed);
             _asteroids = new Asteroid[_gameSave.Asteroids];
             _numAsteroidsLeft = _gameSave.Asteroids;
             for(int i = 0; i < _gameSave.Asteroids; i++)
             {
-                _asteroids[i] = new Asteroid(new Vector2(RandomHelper.Next(0, Constants.GAME_WIDTH), RandomHelper.Next(-9000, 500)), RandomHelper.NextFloat(-1, 0));
+                _asteroids[i] = new Asteroid(new Vector2(_random.Next(0, Constants.GAME_WIDTH), _random.Next(-9000, 500)), _random.Next(0,4));
                 _asteroids[i].LoadContent(_content);
             }
 
@@ -132,9 +133,9 @@ namespace Game4.Screens
 
                 if (_numAsteroidsLeft == 0)
                 {
-                    _gameSave.Asteroids += 50;
+                    _gameSave.Asteroids += 30;
                     _gameSave.Level++;  //TODO Make it change restart the map with a harder difficulty and save the level
-
+                    _gameSave.Seed++;
                     _game.Components.Remove(_pixie);
 
                     LoadingScreen.Load(ScreenManager, true, 0, new SpaceLevelScreen(_game));
@@ -149,6 +150,7 @@ namespace Game4.Screens
                         var LostMessageBox = new MessageBoxScreen(_message);
                         LostMessageBox.Accepted += LostMessageBoxAccepted;
                         LostMessageBox.Cancelled += LostMessageBoxCancelled;
+                        LostMessageBox.Reset += LostMessageBoxReset;
                     
                         ScreenManager.AddScreen(LostMessageBox, 0);
                         _collided = true;
@@ -161,6 +163,11 @@ namespace Game4.Screens
                     }
                 }
             }
+        }
+
+        private void LostMessageBox_Reset(object sender, PlayerIndexEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public override void Draw(GameTime gameTime)
@@ -214,6 +221,12 @@ namespace Game4.Screens
         private void LostMessageBoxCancelled(object sender, PlayerIndexEventArgs e)
         {
             LoadingScreen.Load(ScreenManager, true, 0, new BackgroundScreen(), new MainMenuScreen(_game));
+        }
+
+        private void LostMessageBoxReset(object sender, PlayerIndexEventArgs e)
+        {
+            _gameSave.Seed = _gameSave.Seed + 23;
+            LoadingScreen.Load(ScreenManager, true, 0, new SpaceLevelScreen(_game));
         }
     }
 }
