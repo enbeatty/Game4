@@ -12,7 +12,7 @@ namespace Game4.Screens
     {
         private Game _game;
 
-        public MainMenuScreen(Game game) : base("Main Menu")
+        public MainMenuScreen(Game game) : base("Main Menu", game)
         {
             var playGameMenuEntry = new MenuEntry("Play Game");
             var exitMenuEntry = new MenuEntry("Exit");

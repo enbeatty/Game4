@@ -100,7 +100,7 @@ namespace Game4.Screens
             _numAsteroidsLeft = _gameSave.Asteroids;
             for(int i = 0; i < _gameSave.Asteroids; i++)
             {
-                _asteroids[i] = new Asteroid(new Vector2(_random.Next(0, Constants.GAME_WIDTH), _random.Next(-9000, 500)), _random.Next(0,4));
+                _asteroids[i] = new Asteroid(new Vector2(_random.Next(-32, Constants.GAME_WIDTH-100), _random.Next(-9000, 500)), _random.Next(0,4));
                 _asteroids[i].LoadContent(_content);
             }
 
