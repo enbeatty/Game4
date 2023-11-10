@@ -16,13 +16,15 @@ namespace Game4.Screens
         {
             var playGameMenuEntry = new MenuEntry("Play Game");
             var exitMenuEntry = new MenuEntry("Exit");
+            var optionsMenuEntry = new MenuEntry("Delete Save");
 
             playGameMenuEntry.Selected += PlayGameMenuEntrySelected;
             exitMenuEntry.Selected += OnCancel;
+            optionsMenuEntry.Selected += OptionsMenuEntrySelected;
 
             MenuEntries.Add(playGameMenuEntry);
+            MenuEntries.Add(optionsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
-
             _game = game;
         }
 
@@ -45,5 +47,11 @@ namespace Game4.Screens
         {
             ScreenManager.Game.Exit();
         }
+
+        private void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            ScreenManager.AddScreen(new OptionsMenuScreen(_game), e.PlayerIndex);
+        }
     }
+
 }
