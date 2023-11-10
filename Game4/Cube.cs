@@ -109,6 +109,7 @@ namespace Game4
         /// </summary>
         public void Draw()
         {
+            effect.World = Matrix.CreateTranslation(3, 1, 0);
             // apply the effect 
             effect.CurrentTechnique.Passes[0].Apply();
             // set the vertex buffer
