@@ -44,6 +44,8 @@ namespace Game4.Screens
 
         private PixieParticleSystem _pixie;
 
+        private ExplosionParticleSystem _explosion;
+
         private Texture2D ball;
 
         private const string _message = "You Lost, want to restart?";
@@ -80,7 +82,9 @@ namespace Game4.Screens
             _spaceShip.LoadContent(_content);
 
             _pixie = new PixieParticleSystem(_game, _spaceShip);
+            _explosion = new ExplosionParticleSystem(_game, 20);
             _game.Components.Add(_pixie);
+            _game.Components.Add(_explosion);
 
             string fileName = Path.Combine(Path.GetFullPath("."), "SaveGame.json");
 
@@ -137,6 +141,7 @@ namespace Game4.Screens
                     _gameSave.Level++;  //TODO Make it change restart the map with a harder difficulty and save the level
                     _gameSave.Seed++;
                     _game.Components.Remove(_pixie);
+                    _game.Components.Remove(_explosion);
 
                     LoadingScreen.Load(ScreenManager, true, 0, new SpaceLevelScreen(_game));
                 }
@@ -147,6 +152,7 @@ namespace Game4.Screens
                     if (/*!a.Under &&*/ a.Bounds.CollidesWith(_spaceShip.Bounds))
                     {
                         _game.Components.Remove(_pixie);
+                        _game.Components.Remove(_explosion);
                         var LostMessageBox = new MessageBoxScreen(_message);
                         LostMessageBox.Accepted += LostMessageBoxAccepted;
                         LostMessageBox.Cancelled += LostMessageBoxCancelled;
