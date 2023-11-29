@@ -108,7 +108,7 @@ namespace Game4
             freeParticles = new Queue<int>(maxParticles);
             for (int i = 0; i < particles.Length; i++)
             {
-                particles[i].Initialize(Vector2.Zero);
+                particles[i].Initialize(Vector2.Zero, lifetime: 0);
                 freeParticles.Enqueue(i);
             }
             // Run the InitializeConstants hook
