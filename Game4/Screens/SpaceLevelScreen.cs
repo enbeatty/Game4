@@ -17,6 +17,8 @@ using System.Text.Json;
 using SharpDX.MediaFoundation;
 using System.Reflection.Metadata;
 using SharpDX.Direct2D1;
+using Microsoft.Xna.Framework.Input;
+using System.Net.Sockets;
 
 namespace Game4.Screens
 {
@@ -56,6 +58,11 @@ namespace Game4.Screens
 
         private BasicTilemap _basicMap;
 
+        private KeyboardState _keyboardState;
+        private bool _showRocket = false;
+        private Rocket _rocket;
+        private int _rocketCount = 0;
+        private bool _rocketCollide = false;
 
 
         public SpaceLevelScreen(Game game)
@@ -107,7 +114,8 @@ namespace Game4.Screens
                 _asteroids[i] = new Asteroid(new Vector2(_random.Next(-32, Constants.GAME_WIDTH-100), _random.Next(-9000, 500)), _random.Next(0,4));
                 _asteroids[i].LoadContent(_content);
             }
-
+            _rocket = new Rocket(_spaceShip.Position + new Vector2(20, 5));
+            _rocket.LoadContent(_content);
 
             ball = _content.Load<Texture2D>("rectangle");
 
@@ -130,10 +138,29 @@ namespace Game4.Screens
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, false);
+            _keyboardState = Keyboard.GetState();
 
             if (!_collided)
             {
                 _spaceShip.Update(gameTime);
+
+                if (_keyboardState.IsKeyDown(Keys.LeftShift) && _rocketCount < 3 && !_showRocket)
+                {
+                    _rocket.Position = _spaceShip.Position + new Vector2(20, 5);
+                    _showRocket = true;
+                    
+                    _rocketCount++;
+                }
+
+                if (_showRocket)
+                {
+                    if(_rocket.Position.Y < 0 || _rocketCollide)
+                    {
+                        _showRocket = false;
+                        _rocketCollide = false;
+                    }
+                    _rocket.Update(gameTime);
+                }
 
                 if (_numAsteroidsLeft == 0)
                 {
@@ -149,7 +176,14 @@ namespace Game4.Screens
                 foreach (var a in _asteroids)
                 {
                     a.Update(gameTime);
-                    if (/*!a.Under &&*/ a.Bounds.CollidesWith(_spaceShip.Bounds))
+                    if(a.Bounds.CollidesWith(_rocket.Bounds) && _showRocket)
+                    {
+                        a.Shot = true;
+                        _numAsteroidsLeft--;
+                        _rocketCollide = true;
+                        _explosion.PlaceExplosion(_rocket.Position);
+                    }
+                    if (/*!a.Under &&*/ a.Bounds.CollidesWith(_spaceShip.Bounds) && !a.Shot)
                     {
                         _game.Components.Remove(_pixie);
                         _game.Components.Remove(_explosion);
@@ -201,7 +235,7 @@ namespace Game4.Screens
 
             foreach (var a in _asteroids)
             {
-                if(!a.Under)
+                if(!a.Under && !a.Shot)
                 {
                     a.Draw(gameTime, _spriteBatch);
                     //var rect = new Rectangle((int)a.Bounds.X, (int)a.Bounds.Y, (int)a.Bounds.Width, (int)a.Bounds.Height);
@@ -211,6 +245,13 @@ namespace Game4.Screens
 
             _spaceShip.Draw(gameTime, _spriteBatch);
             _spriteBatch.DrawString(font, $"Current Level: {_gameSave.Level}", new Vector2(0, 0), Color.LightGoldenrodYellow);
+            _spriteBatch.DrawString(font, $"Shots Left: {3 - _rocketCount}", new Vector2(Constants.GAME_WIDTH - 195, 0), Color.LightGoldenrodYellow);
+
+            if (_showRocket)
+            {
+                _rocket.Draw(gameTime, _spriteBatch);
+            }
+
             //var newrect = new Rectangle((int)_spaceShip.Bounds.X, (int)_spaceShip.Bounds.Y, (int)_spaceShip.Bounds.Width, (int)_spaceShip.Bounds.Height);
             //var newrect = new Rectangle(450, 750, 64, 64);
             //_spriteBatch.Draw(ball, newrect, Color.White);

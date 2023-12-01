@@ -39,6 +39,8 @@ namespace Game4
 
         public bool Under { get; set; } = false;
 
+        public bool Shot { get; set; } = false;
+
         public Asteroid(Vector2 position, int texture)
         {
             _position = position;

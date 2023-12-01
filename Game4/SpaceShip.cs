@@ -22,10 +22,7 @@ namespace Game4
         private BoundingRectangle _bounds;
 
         private Vector2 _boundsOffset = new Vector2(11, 11);
-
-        private Rocket _rocket;
-
-        private bool _showRocket = false;
+                
 
         /// <summary>
         /// The bounding volume of the sprite
@@ -44,7 +41,6 @@ namespace Game4
         public SpaceShip()
         {
             _bounds = new BoundingRectangle(new Vector2(Position.X + _boundsOffset.X, Position.Y + _boundsOffset.Y), 48 - _boundsOffset.X, 48 - _boundsOffset.Y);
-            _rocket = new Rocket(Position + new Vector2(0, 5));
         }
 
         /// <summary>
@@ -54,7 +50,6 @@ namespace Game4
         public void LoadContent(ContentManager content)
         {
             _spaceShip = content.Load<Texture2D>("Foozle_2DS0011_Void_MainShip\\PNGs\\Main Ship - Base - Full health");
-            _rocket.LoadContent(content);
         }
 
         /// <summary>
@@ -97,17 +92,6 @@ namespace Game4
                 }
             }
 
-            if (_keyboardState.IsKeyDown(Keys.LeftShift))
-            {
-                _rocket.Position = Position + new Vector2(0, 5);
-                _showRocket = true;
-            }
-
-            if(_showRocket)
-            {
-                _rocket.Update(gameTime);
-            }
-
             _bounds.X = Position.X + _boundsOffset.X;
             _bounds.Y = Position.Y + _boundsOffset.Y;
             Velocity = shipPosition - Position;
@@ -121,10 +105,7 @@ namespace Game4
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_spaceShip, Position, null, Color, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0);
-            if(_showRocket)
-            {
-                _rocket.Draw(gameTime, spriteBatch);
-            }
+            
         }
     }
 }

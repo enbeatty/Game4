@@ -40,7 +40,7 @@ namespace Game4
         public Rocket(Vector2 position)
         {
             Position = position;
-            _bounds = new BoundingRectangle(new Vector2(position.X + _boundsOffset.X, position.Y + _boundsOffset.Y), 197 - _boundsOffset.X, 272 - _boundsOffset.Y);
+            _bounds = new BoundingRectangle(new Vector2(position.X + _boundsOffset.X, position.Y + _boundsOffset.Y), (float)(197*.05) - _boundsOffset.X, (float)(272*.05) - _boundsOffset.Y);
         }
 
         /// <summary>
