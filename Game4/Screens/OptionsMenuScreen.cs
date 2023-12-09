@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Game4.StateManagement;
 using Microsoft.Xna.Framework.Graphics;
@@ -32,7 +31,7 @@ namespace Game4.Screens
         private readonly MenuEntry _deleteSave;
 
 
-        public OptionsMenuScreen(Game game) : base("Options", game)
+        public OptionsMenuScreen(Game game) : base("Delete Save", game)
         {
             _deleteSave = new MenuEntry(string.Empty);
             _game = game;

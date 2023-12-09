@@ -17,13 +17,16 @@ namespace Game4.Screens
             var playGameMenuEntry = new MenuEntry("Play Game");
             var exitMenuEntry = new MenuEntry("Exit");
             var optionsMenuEntry = new MenuEntry("Delete Save");
+            var controlsMenuEntry = new MenuEntry("Controls");
 
             playGameMenuEntry.Selected += PlayGameMenuEntrySelected;
             exitMenuEntry.Selected += OnCancel;
             optionsMenuEntry.Selected += OptionsMenuEntrySelected;
+            controlsMenuEntry.Selected += ControlsMenuEntrySelected;
 
             MenuEntries.Add(playGameMenuEntry);
             MenuEntries.Add(optionsMenuEntry);
+            MenuEntries.Add(controlsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
             _game = game;
         }
@@ -36,7 +39,7 @@ namespace Game4.Screens
         protected override void OnCancel(PlayerIndex playerIndex)
         {
             const string message = "Are you sure you want to exit this sample?";
-            var confirmExitMessageBox = new MessageBoxScreen(message);
+            var confirmExitMessageBox = new MessageBoxExitScreen(message);
 
             confirmExitMessageBox.Accepted += ConfirmExitMessageBoxAccepted;
 
@@ -51,6 +54,14 @@ namespace Game4.Screens
         private void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             ScreenManager.AddScreen(new OptionsMenuScreen(_game), e.PlayerIndex);
+        }
+
+        private void ControlsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            const string message = "Contorls";
+            var controlsMessageBox = new MessageBoxControlsScreen(message);
+
+            ScreenManager.AddScreen(controlsMessageBox , e.PlayerIndex);
         }
     }
 

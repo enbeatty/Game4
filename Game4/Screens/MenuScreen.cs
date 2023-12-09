@@ -22,7 +22,7 @@ namespace Game4.Screens
         private readonly InputAction _menuSelect;
         private readonly InputAction _menuCancel;
 
-        Cube _cube;
+        //Cube _cube;
 
         // Gets the list of menu entries, so derived classes can add or change the menu contents.
         protected IList<MenuEntry> MenuEntries => _menuEntries;
@@ -47,7 +47,7 @@ namespace Game4.Screens
                 new[] { Buttons.B, Buttons.Back },
                 new[] { Keys.Back, Keys.Escape }, true);
 
-            _cube = new Cube(game);
+           // _cube = new Cube(game);
         }
 
         // Responds to user input, changing the selected entry and accepting or cancelling the menu.
@@ -140,7 +140,7 @@ namespace Game4.Screens
                 _menuEntries[i].Update(this, isSelected, gameTime);
             }
 
-            _cube.Update(gameTime);
+            //_cube.Update(gameTime);
 
         }
 
@@ -178,7 +178,7 @@ namespace Game4.Screens
             spriteBatch.DrawString(font, _menuTitle, titlePosition, titleColor,
                 0, titleOrigin, titleScale, SpriteEffects.None, 0);
 
-            _cube.Draw();
+            //_cube.Draw();
 
             spriteBatch.End();
         }
