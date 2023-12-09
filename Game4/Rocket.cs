@@ -40,7 +40,7 @@ namespace Game4
         public Rocket(Vector2 position)
         {
             Position = position;
-            _bounds = new BoundingRectangle(new Vector2(position.X + _boundsOffset.X, position.Y + _boundsOffset.Y), (float)(197*.05) - _boundsOffset.X, (float)(272*.05) - _boundsOffset.Y);
+            _bounds = new BoundingRectangle(new Vector2(position.X + _boundsOffset.X, position.Y + _boundsOffset.Y), (float)(24) - _boundsOffset.X, (float)(48) - _boundsOffset.Y);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Game4
         /// <param name="content">The ContentManager to load with</param>
         public void LoadContent(ContentManager content)
         {
-            _rocket = content.Load<Texture2D>("rectangle");
+            _rocket = content.Load<Texture2D>("rocket");
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Game4
         /// <param name="spriteBatch">The spritebatch to render with</param>
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_rocket, Position, null, Color, 0f, new Vector2(0, 0), .05f, SpriteEffects.None, 0);
+            spriteBatch.Draw(_rocket, Position, null, Color, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0);
         }
     }
 }

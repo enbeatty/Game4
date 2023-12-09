@@ -15,16 +15,16 @@ namespace Game4
     {
         private Texture2D _asteroid;
 
-        private BoundingRectangle _bounds; //TODO
+        private BoundingOval _bounds; //TODO
 
-        private Vector2 _boundsOffset = new Vector2(16,22);
+        private Vector2 _boundsOffset = new Vector2(0,0);
 
         private Vector2 _position;
 
         /// <summary>
         /// The bounding volume of the sprite
         /// </summary>
-        public BoundingRectangle Bounds => _bounds;
+        public BoundingOval Bounds => _bounds;
 
         /// <summary>
         /// The color to blend with the ghost
@@ -45,7 +45,8 @@ namespace Game4
         {
             _position = position;
             Texture = texture;
-            _bounds = new BoundingRectangle(new Vector2(position.X + _boundsOffset.X, position.Y + _boundsOffset.Y), 128 - _boundsOffset.X, 64 - _boundsOffset.Y);
+            _bounds = new BoundingOval(Position, 64, 32);
+            //_bounds = new BoundingRectangle(new Vector2(position.X + _boundsOffset.X, position.Y + _boundsOffset.Y), 64 - _boundsOffset.X, 32 - _boundsOffset.Y);
         }
 
         /// <summary>
@@ -84,8 +85,7 @@ namespace Game4
         {
             //_position += new Vector2(Direction, 1);
             _position += new Vector2(0, 5);
-            _bounds.X = Position.X + _boundsOffset.X;
-            _bounds.Y = Position.Y + _boundsOffset.Y;
+            _bounds.Center = Position;
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Game4
         /// <param name="spriteBatch">The spritebatch to render with</param>
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_asteroid, Position, null, Color, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(_asteroid, Position, null, Color, 0f, new Vector2(128/2, 64/2), 1f, SpriteEffects.None, 0);
         }
     }
 }

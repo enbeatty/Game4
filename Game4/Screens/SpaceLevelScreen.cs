@@ -183,7 +183,8 @@ namespace Game4.Screens
                         _rocketCollide = true;
                         _explosion.PlaceExplosion(_rocket.Position);
                     }
-                    if (/*!a.Under &&*/ a.Bounds.CollidesWith(_spaceShip.Bounds) && !a.Shot)
+                    
+                    if (a.Bounds.CollidesWith(_spaceShip.Bounds) && !a.Shot)
                     {
                         _game.Components.Remove(_pixie);
                         _game.Components.Remove(_explosion);
@@ -191,7 +192,7 @@ namespace Game4.Screens
                         LostMessageBox.Accepted += LostMessageBoxAccepted;
                         LostMessageBox.Cancelled += LostMessageBoxCancelled;
                         LostMessageBox.Reset += LostMessageBoxReset;
-                    
+                        
                         ScreenManager.AddScreen(LostMessageBox, 0);
                         _collided = true;
                     
@@ -218,7 +219,6 @@ namespace Game4.Screens
             if (!_collided)
             {
                 _height += 3;
-            //_viewportPosition += new Vector2(0, -3);
             }
 
             Matrix transform;
@@ -228,7 +228,7 @@ namespace Game4.Screens
             _ooMap.Draw(gameTime, _spriteBatch);
             _spriteBatch.End();
 
-            _spriteBatch.Begin(); //Can do the transform
+            _spriteBatch.Begin(); 
             //_map.Draw(_spriteBatch, new Rectangle(0, 0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT), _viewportPosition); //TODO maybe paralax it a bit and move in different sprite batch call
             
             //_basicMap.Draw(gameTime, _spriteBatch);
@@ -238,7 +238,14 @@ namespace Game4.Screens
                 if(!a.Under && !a.Shot)
                 {
                     a.Draw(gameTime, _spriteBatch);
-                    //var rect = new Rectangle((int)a.Bounds.X, (int)a.Bounds.Y, (int)a.Bounds.Width, (int)a.Bounds.Height);
+                    //var rect = new Rectangle(
+                    //    (int)(a.Bounds.Center.X - a.Bounds.SemiMajor),
+                    //    (int)(a.Bounds.Center.Y - a.Bounds.SemiMinor),
+                    //    (int)(2 * a.Bounds.SemiMajor),
+                    //    (int)(2 * a.Bounds.SemiMinor));
+                    //var rect = new Rectangle((int)a.Bounds.Center.X - (int)a.Bounds.SemiMajor, 
+                    //    (int)a.Bounds.Center.Y - (int)a.Bounds.SemiMinor,
+                    //    (int)(2*a.Bounds.SemiMajor), (int)(2 * a.Bounds.SemiMinor));
                     //_spriteBatch.Draw(ball, rect, Color.White);
                 }
             }

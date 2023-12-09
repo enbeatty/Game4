@@ -21,7 +21,7 @@ namespace Game4
 
         private BoundingRectangle _bounds;
 
-        private Vector2 _boundsOffset = new Vector2(11, 11);
+        private Vector2 _boundsOffset = new Vector2(0, 0);
                 
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Game4
         /// <param name="content">The ContentManager to load with</param>
         public void LoadContent(ContentManager content)
         {
-            _spaceShip = content.Load<Texture2D>("Foozle_2DS0011_Void_MainShip\\PNGs\\Main Ship - Base - Full health");
+            _spaceShip = content.Load<Texture2D>("ship");
         }
 
         /// <summary>
