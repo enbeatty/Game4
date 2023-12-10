@@ -14,21 +14,28 @@ namespace Game4.Screens
 
         public MainMenuScreen(Game game) : base("Main Menu", game)
         {
-            var playGameMenuEntry = new MenuEntry("Play Game");
+            var playStoryMenuEntry = new MenuEntry("Play Story Mode");
+            var playGameMenuEntry = new MenuEntry("Play Endless Mode");
             var exitMenuEntry = new MenuEntry("Exit");
             var optionsMenuEntry = new MenuEntry("Delete Save");
             var controlsMenuEntry = new MenuEntry("Controls");
 
+            playStoryMenuEntry.Selected += PlayStoryMenuEntrySelected;
             playGameMenuEntry.Selected += PlayGameMenuEntrySelected;
             exitMenuEntry.Selected += OnCancel;
             optionsMenuEntry.Selected += OptionsMenuEntrySelected;
             controlsMenuEntry.Selected += ControlsMenuEntrySelected;
 
+            MenuEntries.Add(playStoryMenuEntry);
             MenuEntries.Add(playGameMenuEntry);
             MenuEntries.Add(optionsMenuEntry);
             MenuEntries.Add(controlsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
             _game = game;
+        }
+        private void PlayStoryMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new SpaceStoryLevelScreen(_game));
         }
 
         private void PlayGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
