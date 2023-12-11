@@ -35,7 +35,7 @@ namespace Game4.Screens
         }
         private void PlayStoryMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new SpaceStoryLevelScreen(_game));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new StoryScreen(_game));
         }
 
         private void PlayGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)

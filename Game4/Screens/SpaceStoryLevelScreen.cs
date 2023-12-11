@@ -105,7 +105,7 @@ namespace Game4.Screens
             _numAsteroidsLeft = _gameSave.Asteroids;
             for(int i = 0; i < _gameSave.Asteroids; i++)
             {
-                _asteroids[i] = new Asteroid(new Vector2(_random.Next(-32, Constants.GAME_WIDTH-100), _random.Next(-9000, 500)), _random.Next(0,4));
+                _asteroids[i] = new Asteroid(new Vector2(_random.Next(-32, Constants.GAME_WIDTH-20), _random.Next(-9000, 500)), _random.Next(0,4));
                 _asteroids[i].LoadContent(_content);
             }
             _rocket = new Rocket(_spaceShip.Position + new Vector2(20, 5));
@@ -178,7 +178,7 @@ namespace Game4.Screens
                         string fileName = "StorySaveGame.json";
                         string jsonString = JsonSerializer.Serialize(_gameSave);
                         File.WriteAllText(fileName, jsonString);
-                        LoadingScreen.Load(ScreenManager, true, 0, new BackgroundScreen(), new MainMenuScreen(_game));
+                        LoadingScreen.Load(ScreenManager, true, 0, new EndScreen(_game));
                     }
                     else
                     {
@@ -254,7 +254,8 @@ namespace Game4.Screens
             }
 
             _spaceShip.Draw(gameTime, _spriteBatch);
-            _spriteBatch.DrawString(font, $"Current Level: {_gameSave.Level}", new Vector2(0, 0), Color.LightGoldenrodYellow);
+            //_spriteBatch.DrawString(font, $"Current Level: {_gameSave.Level}", new Vector2(0, 0), Color.LightGoldenrodYellow);
+            _spriteBatch.DrawString(font, $"Levels Left: {4 - _gameSave.Level}", new Vector2(5, 0), Color.LightGoldenrodYellow);
             _spriteBatch.DrawString(font, $"Shots Left: {3 - _rocketCount}", new Vector2(Constants.GAME_WIDTH - 195, 0), Color.LightGoldenrodYellow);
 
             if (_showRocket)
